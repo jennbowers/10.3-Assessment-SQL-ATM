@@ -12,23 +12,25 @@ public class Main {
 	    Class.forName("org.sqlite.JDBC");
 
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:account.db")) {
-            DatabaseManager db = new DatabaseManager(connection);
-            db.dropAccountTable();
-            db.createAccountTable();
+            DatabaseManager dbm = new DatabaseManager(connection);
 
-            Statement statement = db.getStatement();
+            initializeAtm(dbm);
 
-            Account openingAccount = new Account(0.00, statement);
-            openingAccount.save();
-
-            List<Account> results = Account.findAll(db);
-            for (Account amount: results) {
-                System.out.println(amount);
-            }
         } catch (SQLException ex) {
             System.out.println("Something went wrong with your DB connection.");
             ex.printStackTrace();
         }
+    }
+
+    public static void initializeAtm(DatabaseManager dbm) {
+        System.out.println("-----------------------------------------------------------");
+        System.out.println("Welcome to your personal ATM. How can I help you today?");
+        System.out.println("1) Make a deposit");
+        System.out.println("2) Make a withdrawl");
+        System.out.println("3) See your current balance");
+        System.out.println("-----------------------------------------------------------");
+
+
     }
 }
 

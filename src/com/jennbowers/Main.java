@@ -5,6 +5,7 @@ import com.jennbowers.model.Account;
 
 import java.sql.*;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -30,7 +31,28 @@ public class Main {
         System.out.println("3) See your current balance");
         System.out.println("-----------------------------------------------------------");
 
+        Scanner scanner = new Scanner (System.in);
+        int userInput = scanner.nextInt();
 
+        switch (userInput){
+            case 1:
+                System.out.println("Let's make a deposit!");
+                System.out.println("How much money would you like to deposit?");
+                double userInputDeposit = scanner.nextDouble();
+                break;
+            case 2:
+                System.out.println("Let's make a withdrawl");
+                System.out.println("How much money would you like to withdraw?");
+                String userInputWithdrawlString = "-" + scanner.nextLine();
+                double userInputWithdrawl = Double.parseDouble(userInputWithdrawlString);
+                break;
+            case 3:
+                System.out.println("Let's check out your current balance");
+                break;
+            default:
+                System.out.println("Please enter a valid input");
+        }
+        initializeAtm(dbm);
     }
 }
 

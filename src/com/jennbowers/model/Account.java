@@ -64,17 +64,17 @@ public class Account {
         return currentBalance;
     }
 
-    public static void makeWithdrawl(DatabaseManager dbm, String amount) throws SQLException{
-        double currentBalance = calculateBalance(dbm);
-        if (Double.parseDouble(amount) > currentBalance) {
-            System.out.println("Insufficient funds");
-            return;
-        }
-        String negativeAmount = "-" + amount;
-        double withdrawlAmount = Double.parseDouble(negativeAmount);
-        Account newWithdrawl = new Account(withdrawlAmount, dbm.getStatement());
-        newWithdrawl.save();
-    }
+//    public static void makeWithdrawl(DatabaseManager dbm, String amount) throws SQLException{
+//        double currentBalance = calculateBalance(dbm);
+//        if (Double.parseDouble(amount) > currentBalance) {
+//            System.out.println("Insufficient funds");
+//            return;
+//        }
+//        String negativeAmount = "-" + amount;
+//        double withdrawlAmount = Double.parseDouble(negativeAmount);
+//        Account newWithdrawl = new Account(withdrawlAmount, dbm.getStatement());
+//        newWithdrawl.save();
+//    }
 
     @Override
     public String toString() {

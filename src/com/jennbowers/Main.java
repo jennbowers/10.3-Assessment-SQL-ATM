@@ -26,7 +26,7 @@ public class Main {
         System.out.println("-----------------------------------------------------------");
         System.out.println("Welcome to your personal ATM. How can I help you today?");
         System.out.println("1) Make a deposit");
-        System.out.println("2) Make a withdrawl");
+        System.out.println("2) Make a withdrawal");
         System.out.println("3) See your current balance");
         System.out.println("-----------------------------------------------------------");
 
@@ -42,10 +42,10 @@ public class Main {
                 newDeposit.save();
                 break;
             case 2:
-                System.out.println("Let's make a withdrawl");
+                System.out.println("Let's make a withdrawal");
                 System.out.println("How much money would you like to withdraw?");
-                String userInputWithdrawl = scanner.next();
-                Account.makeWithdrawlOverdraft(dbm, userInputWithdrawl);
+                String userInputWithdrawal = scanner.next();
+                Account.makeWithdrawalOverdraft(dbm, userInputWithdrawal);
                 break;
             case 3:
                 System.out.println("Let's check out your current balance");

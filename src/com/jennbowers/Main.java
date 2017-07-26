@@ -45,7 +45,7 @@ public class Main {
                 System.out.println("Let's make a withdrawl");
                 System.out.println("How much money would you like to withdraw?");
                 String userInputWithdrawl = scanner.next();
-                Account.makeWithdrawl(dbm, userInputWithdrawl);
+                Account.makeWithdrawlOverdraft(dbm, userInputWithdrawl);
                 break;
             case 3:
                 System.out.println("Let's check out your current balance");

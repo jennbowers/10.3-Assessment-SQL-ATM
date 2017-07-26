@@ -2,7 +2,6 @@ package com.jennbowers.model;
 
 import com.jennbowers.helpers.DatabaseManager;
 
-import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -45,6 +44,24 @@ public class Account {
             tempCollection.add(tempAccount);
         }
         return tempCollection;
+    }
+
+    public static double calculateBalance(DatabaseManager dbm) throws SQLException {
+        double currentBalance = 0;
+        ResultSet rs = dbm.findAll("account");
+        List<Double> tempCollection = new ArrayList<>();
+        Statement tempStatement = dbm.getStatement();
+
+        while(rs.next()) {
+            double transactionAmount = rs.getDouble("transactionAmount");
+            tempCollection.add(transactionAmount);
+        }
+
+        for(Double amount : tempCollection) {
+            currentBalance += amount;
+        }
+        System.out.println(currentBalance);
+        return currentBalance;
     }
 
     @Override

@@ -33,4 +33,10 @@ public class DatabaseManager {
         ResultSet rs = statement.executeQuery(formattedSql);
         return rs;
     }
+
+    public ResultSet findAllTransactions (String table) throws SQLException {
+        String formattedSql = String.format("SELECT 'transactionAmount' FROM %s", table);
+        ResultSet rs = statement.executeQuery(formattedSql);
+        return rs;
+    }
 }

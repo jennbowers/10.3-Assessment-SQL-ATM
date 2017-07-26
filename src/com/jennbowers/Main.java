@@ -23,7 +23,7 @@ public class Main {
         }
     }
 
-    public static void initializeAtm(DatabaseManager dbm) {
+    public static void initializeAtm(DatabaseManager dbm) throws SQLException {
         System.out.println("-----------------------------------------------------------");
         System.out.println("Welcome to your personal ATM. How can I help you today?");
         System.out.println("1) Make a deposit");
@@ -39,15 +39,20 @@ public class Main {
                 System.out.println("Let's make a deposit!");
                 System.out.println("How much money would you like to deposit?");
                 double userInputDeposit = scanner.nextDouble();
+                Account newDeposit = new Account(userInputDeposit, dbm.getStatement());
+                newDeposit.save();
                 break;
             case 2:
                 System.out.println("Let's make a withdrawl");
                 System.out.println("How much money would you like to withdraw?");
-                String userInputWithdrawlString = "-" + scanner.nextLine();
+                String userInputWithdrawlString = "-" + scanner.next();
                 double userInputWithdrawl = Double.parseDouble(userInputWithdrawlString);
+                Account newWithdrawl = new Account(userInputWithdrawl, dbm.getStatement());
+                newWithdrawl.save();
                 break;
             case 3:
                 System.out.println("Let's check out your current balance");
+                Account.calculateBalance(dbm);
                 break;
             default:
                 System.out.println("Please enter a valid input");

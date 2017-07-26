@@ -4,7 +4,6 @@ import com.jennbowers.helpers.DatabaseManager;
 import com.jennbowers.model.Account;
 
 import java.sql.*;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -45,10 +44,8 @@ public class Main {
             case 2:
                 System.out.println("Let's make a withdrawl");
                 System.out.println("How much money would you like to withdraw?");
-                String userInputWithdrawlString = "-" + scanner.next();
-                double userInputWithdrawl = Double.parseDouble(userInputWithdrawlString);
-                Account newWithdrawl = new Account(userInputWithdrawl, dbm.getStatement());
-                newWithdrawl.save();
+                String userInputWithdrawl = scanner.next();
+                Account.makeWithdrawl(dbm, userInputWithdrawl);
                 break;
             case 3:
                 System.out.println("Let's check out your current balance");
